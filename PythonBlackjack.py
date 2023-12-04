@@ -4,6 +4,17 @@ import sys
 from colorama import init, Fore, Style
 init()
 
+def logo():
+    logo = ''' 
+ ____ _  _ ____ _  _  __  __ _    ____ __     __   ___ __ _   __   __   ___ __ _ 
+(  _ ( \/ |_  _) )( \/  \(  ( \  (  _ (  )   / _\ / __|  / )_(  ) / _\ / __|  / )
+ ) __/)  /  )( ) __ (  O )    /   ) _ ( (_/\/    ( (__ )  (/ \) \/    ( (__ )  ( 
+(__) (__/  (__)\_)(_/\__/\_)__)  (____|____/\_/\_/\___|__\_)____/\_/\_/\___|__\_)
+      By: Erfwerm                                                  v0.1'''
+
+    print(logo)
+    print('\n')
+
 blank_cards_ascii = {
     0: """
        _______
@@ -196,6 +207,7 @@ def PlayBlackjack(game_mode, player_name, player_money):
     """This is the main function of the whole program.
     This probably needs to be cut down quite a bit.
     I'm using it for both current game modes so I have a number of game mode flags in the code"""
+    logo()
     # Initialize the deck
     deck = [0, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
@@ -295,6 +307,7 @@ def PlayBlackjack(game_mode, player_name, player_money):
     deal_again = input(f'{Fore.GREEN}Do you want another card? y/n : {Style.RESET_ALL}').lower()
     while deal_again == 'y':
         clear_screen()
+        logo()
         # user_hand.append(random.choice(deck))
         # points = CalculatePoints(user_hand)
         # user_hand.append(random.choice(deck))
@@ -338,6 +351,7 @@ def PlayBlackjack(game_mode, player_name, player_money):
     
     # Now that the player has finished getting cards, lets show the dealers full hand
     clear_screen()
+    logo()
     second_dealer_card = random.choice(deck[1:])
     # dealer_hand.append(second_dealer_card)
     dealer_hand[1] = second_dealer_card
@@ -353,6 +367,7 @@ def PlayBlackjack(game_mode, player_name, player_money):
         print(f'{Fore.YELLOW}Dealers hand is less than 16. Drawing a card..{Style.RESET_ALL}')
         input('')
         clear_screen()
+        logo()
         dealer_hand = DealDealerCard(dealer_hand, deck)
         dealer_points = CalculatePoints(dealer_hand)
         print(f'{Fore.YELLOW}Dealers hand : {dealer_hand} : {dealer_points}{Style.RESET_ALL}')
@@ -371,12 +386,14 @@ def PlayBlackjack(game_mode, player_name, player_money):
     # Now lets show the players final hand and the points
     # and also the dealers final hand and points
     if game_mode == 2 or game_mode == 3:
+        logo()
         print(f'{Fore.YELLOW}Dealers Final Hand : {dealer_hand} {dealer_points}{Style.RESET_ALL}')
         PrintArt(dealer_hand)
      
         print(f'{Fore.GREEN}\n{player_money} | Players Final Hand : {user_hand} {points}{Style.RESET_ALL}')
         PrintArt(user_hand)
     elif game_mode != 2:
+        logo()
         print(f'{Fore.YELLOW}Dealers Final Hand : {dealer_hand} {dealer_points}{Style.RESET_ALL}')
         PrintArt(dealer_hand)
      
@@ -480,9 +497,7 @@ def run_game():
 
     try:
         while not game_start:
-                print('---------------------')
-                print('Welcome to Blackjack')
-                print('---------------------')
+                logo()
                 print('1. Play Quick Blackjack (no betting)')
                 print('2. BlackJack All-Stars (betting, you choose start value)')
                 print('3. Fixed Income (betting, start with $1000)')
