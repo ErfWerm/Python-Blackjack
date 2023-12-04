@@ -1,5 +1,8 @@
 A game of Blackjack, written in Python 3.12
 
+Version 0.1 Executable -
+	https://www.dropbox.com/scl/fi/25oavmrlgi613cug2i5ga/PythonBlackjack.exe?rlkey=iudx7g5a5cqcq27aazhsw2gno&dl=0
+
 This game has 3 modes -
 
 	Quick Blackjack - Just play a normal hand of blackjack
